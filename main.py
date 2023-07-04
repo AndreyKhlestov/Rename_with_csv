@@ -1,7 +1,7 @@
 import os
 import re
 
-from config import BASE_PATH, BASE_EXCLUDE_REGEX, BASE_INCLUDE_REGEX, logger
+from config import BASE_PATH, BASE_EXCLUDE_REGEX, BASE_INCLUDE_REGEX, CSV_FILE_PATH, logger
 from objects import File
 from work_with_csv import read_csv_file
 
@@ -32,11 +32,12 @@ def main():
     logger.info("Запуск программы")
 
     # путь к файлу CSV, который нужно прочитать
-    name_csv_file = "eBay-OrdersReport-Jun-28-2023-01_39_23-0700-13106848719.csv"
-    csv_file_path = os.path.join(BASE_PATH, name_csv_file)  # возможно нужно будет отдельно получать путь
+    # name_csv_file = "eBay-OrdersReport-Jun-28-2023-01_39_23-0700-13106848719.csv"
+    # csv_file_path = os.path.join(BASE_PATH, name_csv_file)  # возможно нужно будет отдельно получать путь
 
     # получаем словарь из короткого и длинного номера заказа
-    orders = read_csv_file(csv_file_path)
+    # orders = read_csv_file(csv_file_path)
+    orders = read_csv_file(CSV_FILE_PATH)
 
     # получаем список файлов, которые подходят по шаблону для переименования
     files = search_files()
