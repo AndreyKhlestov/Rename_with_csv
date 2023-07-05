@@ -1,6 +1,7 @@
 import logging
 from colorama import Fore
 
+
 # Настройка приоритетов для уровней логирования
 level_log = {
     'debug': 10,

@@ -3,7 +3,7 @@ import os
 import sys
 from logging.handlers import RotatingFileHandler
 
-from colorama import Style
+from colorama import Style, init as colorama_init
 from nicelog.formatters import Colorful
 from nicelog.styles.base import BaseStyle
 
@@ -131,4 +131,5 @@ def create_loggers(config):
     return loggers
 
 
+colorama_init(strip=not sys.stdout.isatty())
 my_loggers = create_loggers(LOGGERS_CONFIG)

@@ -30,15 +30,8 @@ def rename_file(old_name: str, new_name: str, directory: str = BASE_PATH):
 
 def main():
     logger.info("Запуск программы")
-
-    # путь к файлу CSV, который нужно прочитать
-    # name_csv_file = "eBay-OrdersReport-Jun-28-2023-01_39_23-0700-13106848719.csv"
-    # csv_file_path = os.path.join(BASE_PATH, name_csv_file)  # возможно нужно будет отдельно получать путь
-
-    # получаем словарь из короткого и длинного номера заказа
-    # orders = read_csv_file(csv_file_path)
+    # получаем список заказов из файла
     orders = read_csv_file(CSV_FILE_PATH)
-
     # получаем список файлов, которые подходят по шаблону для переименования
     files = search_files()
 
@@ -52,9 +45,7 @@ def main():
 
         if order_files:
             for file in order_files:
-                # current_name_file = os.path.join(file.directory, file.name)
                 new_name = file.name.replace(f"_{order.sales_number}_", f"_{order.sales_number}_{order.order_number}_")
-                # new_name_file = os.path.join(file.directory, new_name)
                 rename_file(old_name=file.name, new_name=new_name, directory=file.directory)
 
     logger.info("Программа завершила работу")
@@ -62,15 +53,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# rename_file(current_name_file, new_name_file)
-#
-# path = os.listdir(BASE_PATH)
-# for i_path in path:
-#     print(i_path)
-#
-# # Пример использования функции:
-# a = search_files()
-# for i in a:
-#     print(i)
-
+    input("press close to exit")
