@@ -18,9 +18,10 @@ class File:
 
 class Order:
     """Класс для хранения и сравнивание информации о заказах"""
-    def __init__(self, sales_number: str, order_number: str):
+    def __init__(self, sales_number: str, order_number: str, max_delivery_date: str):
         self.sales_number = sales_number
         self.order_number = order_number
+        self.max_delivery_date = max_delivery_date
 
     def __eq__(self, other):
         if isinstance(other, Order):

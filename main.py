@@ -1,4 +1,5 @@
 import re
+import os
 
 from config import CSV_FILE_PATH, logger, INFO, BASE_INCLUDE_REGEX
 from utils.work_with_csv import read_csv_file
@@ -21,7 +22,11 @@ def main():
 
         if order_files:
             for file in order_files:
-                new_name = file.name.replace(f"_{order.sales_number}_", f"_{order.sales_number}_{order.order_number}_")
+                # отделяем имя файла и расширение
+                filename, extension = os.path.splitext(file.name)
+                # 'склеиваем' новое имя
+                new_name = (filename.replace(f"_{order.sales_number}_", f"_{order.sales_number}_{order.order_number}_")
+                            + f"_{order.max_delivery_date}" + extension)
                 rename_file(old_name=file.name, new_name=new_name, directory=file.directory)
 
                 # удаляем данные файла, чтобы повторно его не использовать при поиске и
