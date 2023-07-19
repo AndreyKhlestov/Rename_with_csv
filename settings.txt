@@ -1,2 +1,2 @@
-CSV_FILE=C:/Users/Андрей/Desktop/переименование файлов/тесты/eBay-OrdersReport-Jun-28-2023-01_39_23-0700-13106848719.csv
-BASE_PATH=C:/Users/Андрей/Desktop/переименование файлов/тесты/
+CSV_FILE=C:/Users/Андрей/Desktop/переименование файлов/Исходники/eBay-OrdersReport-Jul-13-2023-01_44_54-0700-11107531032.csv
+BASE_PATH=C:/Users/Андрей/Desktop/переименование файлов/test/

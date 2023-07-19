@@ -26,5 +26,5 @@ level_color = {
 
 # Названия логеров и уровень отображения
 LOGGERS_CONFIG = [
-    {'name': 'ProgramLogger', 'log_level': logging.DEBUG},
+    {'name': 'ProgramLogger', 'log_level': logging.INFO},
 ]

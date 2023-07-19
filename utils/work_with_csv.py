@@ -7,10 +7,6 @@ from objects import Order
 
 def check_row_csv(row: list, index: int) -> bool:
     """Проверка корректности значений строки, полученной из csv файла"""
-    # пропуск первых строк с заголовком и пустыми разделительными строками
-    if index <= 3:
-        return False
-
     # если строка пустая (находится перед последними двумя строками)
     if len(row[0]) == 0 and len(row[1]) == 0:
         return False
@@ -43,17 +39,19 @@ def read_csv_file(file_path: str) -> list:
         # читаем построчно csv файл
         for index, row in enumerate(reader):
             # пропуск первых строк с заголовком и пустыми разделительными строками
-            if index <= 3:
+            if index < 3:
                 continue
             # проверка данных
             if not check_row_csv(row, index):
                 continue
 
-            orders.append(Order(sales_number=row[0], order_number=row[1]))
+            new_order = Order(sales_number=row[0], order_number=row[1])
+            if new_order not in orders:
+                orders.append(new_order)
 
         # проверка наличия полученных данных о заказах
         if len(orders) == 0:
-            logger.error("Не получены данные о заказах из файла. Проверьте csv файл.")
+            logger.__error("Не получены данные о заказах из файла. Проверьте csv файл.")
             raise ValueError("Нет данных о заказах")
 
         return orders
