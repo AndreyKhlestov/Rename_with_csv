@@ -12,7 +12,7 @@ def search_files(directory: str = BASE_PATH,
     """Поиск файлов в указанной директории при помощи регулярных выражений"""
     result = list()
     if not (os.path.exists(directory) and os.path.isdir(directory)):
-        INFO.add_error("Не найден указанная директория для поиска файлов для переименование. "
+        INFO.add_error("Не найдена указанная директория для поиска файлов для переименование. "
                        "Проверьте корректность указанного пути.")
         return result
 

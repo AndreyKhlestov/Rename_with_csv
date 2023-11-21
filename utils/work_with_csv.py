@@ -9,7 +9,7 @@ from objects import Order
 def check_row_csv(row: list, index: int) -> bool:
     """Проверка корректности значений строки, полученной из csv файла"""
     # если строка пустая (находится перед последними двумя строками)
-    if len(row[0]) == 0 and len(row[1]) == 0:
+    if len(row) == 0 or len(row[0]) == 0 and len(row[1]) == 0:
         return False
 
     # пропускаем последние две строки
